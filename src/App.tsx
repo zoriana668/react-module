@@ -4,10 +4,11 @@ import MyComponent from "./components/MyComponent.tsx";
 function App() {
   return (
     <>
-      <MyComponent text ={'hello1'}/>
-      <MyComponent text ={'hello 2'}/>
-      <MyComponent text = {'hello okten'}/>
-        {/*{MyComponent({text: 'hello 2'})}*/}
+        <MyComponent title ={'title 1'}>
+            Lorem ipsum dolor sit amet.
+        </MyComponent>
+        <MyComponent title ={'title 2'}></MyComponent>
+      <MyComponent title = {'title 3'}/>
     </>
   )
 }

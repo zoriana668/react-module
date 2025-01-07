@@ -1,16 +1,12 @@
-import {FC} from "react";
-
-// стандартний варіант підключення css
-// import './MyComponent.css'
+import {FC, ReactNode} from "react";
 
 
-// варіант з модулями
-import styles from './MyComponent.module.css'
+type MyComponentPropType = {
+    title: string;
+    children?: ReactNode;
+};
 
-
-type MyComponentPropType = { text: string };
-
-const MyComponent:FC<MyComponentPropType> = ({text}) => {
+const MyComponent:FC<MyComponentPropType> = ({title, children}) => {
     return (
         // <div className={'target'}>
         //     {text}
@@ -18,8 +14,9 @@ const MyComponent:FC<MyComponentPropType> = ({text}) => {
 
 
         //  // варіант з модулями
-        <div className={styles.target}>
-            {text}
+        <div className= 'text-3xl font-bold underline'>
+            <h2>{title}</h2>
+            <p>{children}</p>
         </div>
     );
 };
