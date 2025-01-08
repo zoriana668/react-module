@@ -1,5 +1,6 @@
 import {FC, ReactNode} from 'react';
 import {ICharacter} from "../../models/ICharacter.ts";
+import './CharacterComponent.css'
 
 type MyPropsType = {
     character: ICharacter;
@@ -7,13 +8,13 @@ type MyPropsType = {
 
 }
 
-const CharacterComponent:FC<MyPropsType> = ({character}:MyPropsType ) => {
+const CharacterComponent:FC<MyPropsType> = ({character, children}:MyPropsType ) => {
     return (
-        <div>
-            <h2>{character.name} {character.surname}</h2>
+        <div className='character-block my-10'>
             <img src={character.photo} alt={character.name}/>
-            <p>{character.age}</p>
-            <p>{character.info}</p>
+            <h2 className='character-name text-2xl'>{character.name} {character.surname}</h2>
+            <p className='character-age'>{character.age}</p>
+            <p>{children}</p>
         </div>
     );
 };

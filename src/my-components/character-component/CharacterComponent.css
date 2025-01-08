@@ -1,0 +1,18 @@
+
+.character-block {
+    background-color: #5799ef;
+}
+
+.character-age {
+    font-size: 22px;
+}
+
+.character-name,
+.character-age {
+    text-align: center;
+}
+
+img {
+    width: 200px;
+    margin: 0 auto;
+}

@@ -6,7 +6,7 @@ export const FamilyComponent = ()=> {
     return (
         <div>
             {
-                simpsons.map(value => <CharacterComponent character={value}>
+                simpsons.map((value, index) => <CharacterComponent key={index} character={value}>
                     {value.info}
                     </CharacterComponent>)
             }
