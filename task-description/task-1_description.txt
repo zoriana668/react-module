@@ -7,9 +7,6 @@ Task 1 (kLZQR7Q98)
 
 
 
-
-
-
 let simpsons = [
     {
         name: 'Bart',
