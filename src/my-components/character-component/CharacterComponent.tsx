@@ -1,11 +1,13 @@
-import {FC} from 'react';
+import {FC, ReactNode} from 'react';
 import {ICharacter} from "../../models/ICharacter.ts";
 
 type MyPropsType = {
-    character: ICharacter
+    character: ICharacter;
+    children?: ReactNode;
+
 }
 
-const CharacterComponent:FC<MyPropsType> = ({character}) => {
+const CharacterComponent:FC<MyPropsType> = ({character, children}) => {
     return (
         <div>
             <h2>{character.name} {character.surname}</h2>
