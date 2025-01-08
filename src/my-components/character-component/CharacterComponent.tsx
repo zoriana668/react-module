@@ -7,7 +7,7 @@ type MyPropsType = {
 
 }
 
-const CharacterComponent:FC<MyPropsType> = ({character, children}) => {
+const CharacterComponent:FC<MyPropsType> = ({character}:MyPropsType ) => {
     return (
         <div>
             <h2>{character.name} {character.surname}</h2>
