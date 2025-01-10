@@ -1,16 +1,22 @@
-import './App.css'
-import {products} from "./data/productsList.ts";
-import {IProduct} from "./models/IProduct.ts";
-import MyProduct from "./components/my-product/MyProduct.tsx";
+import {useState} from "react";
 
-function App() {
+const App = () =>  {
+
+  let[counter, setCounter] = useState<number>(0);
+    console.log('mount');
   return (
-    <>
-        {
-            products.map((product: IProduct, index) => <MyProduct key={index} product={product}/>
-            )
-        }
-    </>
+      <div>
+
+        <h2>{counter}</h2>
+        <button onClick={() => {
+          setCounter(++counter);
+        }}>increment</button>
+        <button onClick={() => {
+          setCounter(prevState => {
+                return --prevState;
+            });
+        }}>decrement</button>
+      </div>
   );
 }
 
