@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import {IUser} from "../../models/IUser.ts";
 import UserComponent from "../user-component/UserComponent.tsx";
 
 const UsersComponent = () => {
