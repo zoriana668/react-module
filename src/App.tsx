@@ -1,23 +1,21 @@
 import {useState} from "react";
 
 const App = () =>  {
+    const [users, setUsers] = useState<any[]>([]);
 
-  let[counter, setCounter] = useState<number>(0);
-    console.log('mount');
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then(value => value.json())
+        .then(response => {
+            setUsers(response);
+        });
+
   return (
       <div>
-
-        <h2>{counter}</h2>
-        <button onClick={() => {
-          setCounter(++counter);
-        }}>increment</button>
-        <button onClick={() => {
-          setCounter(prevState => {
-                return --prevState;
-            });
-        }}>decrement</button>
+          {
+              users.map(value => <div>{value.name}</div>)
+          }
       </div>
-  );
+  )
 }
 
 export default App
