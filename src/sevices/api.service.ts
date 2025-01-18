@@ -1,6 +1,6 @@
 import {ITodo} from "../models/ITodo.ts";
 
-export const getTodoLists = async ():Promise<ITodo> => {
+export const getTodoLists = async ():Promise<ITodo[]> => {
     return await fetch(import.meta.env.VITE_API_URL_TODO)
         .then(value => value.json());
 }
