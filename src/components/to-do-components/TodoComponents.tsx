@@ -1,6 +1,6 @@
 
 import {useState, useEffect} from "react";
-import {ITodoList} from "../../models/ITodoList.ts";
+import {ITodoList, ITodoListResponse} from "../../models/ITodoList.ts";
 import {TodoComponent} from "../to-do-component/TodoComponent.tsx";
 import {getTodoLists} from "../../services/api.service.ts";
 
@@ -9,7 +9,14 @@ export const TodoComponents = () => {
     useEffect(() => {
         getTodoLists()
             .then(response => {
-                setTodoLists(response)
+                if(response.todos) {
+                    setTodoLists(response.todos);
+                } else {
+                    console.error('Invalid response format', response);
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching todos:', error);
             });
 
         return () => {

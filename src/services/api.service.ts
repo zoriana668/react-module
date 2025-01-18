@@ -1,6 +1,7 @@
-import {ITodoList} from "../models/ITodoList.ts";
+import {ITodoList, ITodoListResponse} from "../models/ITodoList.ts";
 
-export const getTodoLists = async (): Promise<ITodoList[]> => {
+
+export const getTodoLists = async (): Promise<ITodoListResponse[]> => {
     return await fetch(import.meta.env.VITE_DUMMY_API_URL)
         .then(value => value.json());
 }

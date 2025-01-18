@@ -4,3 +4,7 @@ export interface ITodoList {
     completed: boolean;
     userId: number
 }
+
+export interface ITodoListResponse {
+    todos: ITodoList[];
+}
