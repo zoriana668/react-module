@@ -1,26 +1,27 @@
 
 import {useState, useEffect} from "react";
-import {ITodo} from "../../models/ITodo.ts";
+import {ITodoList} from "../../models/ITodoList.ts";
 import {TodoComponent} from "../to-do-component/TodoComponent.tsx";
-import {getTodoLists} from "../../sevices/api.service.ts";
+import {getTodoLists} from "../../services/api.service.ts";
 
 export const TodoComponents = () => {
-    const [todoLists, setTodoLists] = useState<ITodo[]>([]);
+    const [todoLists, setTodoLists] = useState<ITodoList[]>([]);
     useEffect(() => {
         getTodoLists()
             .then(response => {
-                setTodoLists(response);
+                setTodoLists(response)
             });
 
         return () => {
             console.log('done');
         }
     }, []);
+
     return (
         <div>
             {
                 todoLists.map(todoList => <TodoComponent key={todoList.id} item={todoList}/>)
             }
         </div>
-    );
-};
+    )
+}

@@ -1,18 +1,18 @@
-import {FC} from 'react';
-import {ITodo} from "../../models/ITodo.ts";
-import './TodoComponent.css'
+import {FC} from "react";
+import {ITodoList} from "../../models/ITodoList.ts";
+import './TodoComponent.css';
 
-type TodoPropType = {
-    item: ITodo;
+type TodoListPropType = {
+    item: ITodoList;
 }
 
-export const TodoComponent:FC<TodoPropType> = ({item}) => {
+export const TodoComponent:FC<TodoListPropType> = ({item}) => {
     return (
-        <div className={'todo-block my-3 cursor-copy shadow-md'}>
-            <p className={'todo-id'}>{item.id}</p>
-            <p className={'todo-title'}>{item.title}</p>
-            <p className={'todo-completed'}>{item.completed}</p>
-            <p className={'todo-user__id'}>{item.userId}</p>
+        <div className={'item-block'}>
+            <p className={'item-id'}>{item.id}</p>
+            <p className={'item-todo'}>{item.todo}</p>
+            <p className={'item-completed'}>{item.completed}</p>
+            <p className={'item-user-id'}>{item.userId}</p>
         </div>
-    );
-};
+    )
+}
