@@ -5,18 +5,18 @@ import {UsersPage} from "../pages/UsersPage.tsx";
 import {PostsPage} from "../pages/PostsPage.tsx";
 import {SingleUserDetailsPage} from "../pages/SingleUserDetailsPage.tsx";
 
-
 export const routes = createBrowserRouter([
     {
-        path:'', element:<Layout/>,
+        path:'', element: <Layout/>,
 
         children: [
-            {index: true, element: <HomePage/>},        // index: true - це аналог до path: ''
-            {path: 'users', element: <UsersPage/>, children:[
-                    {path:'posts/:userId', element:<PostsPage/>}
+            {index: true, element: <HomePage/>},
+            {path: 'users', element: <UsersPage/>, children: [
+                    {path: 'posts/:userId', element:<PostsPage/>}
                 ]},
             {path: 'users/details', element: <SingleUserDetailsPage/>},
             {path: 'posts', element: <PostsPage/>}
+
         ]
     }
 ])

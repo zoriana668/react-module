@@ -1,32 +1,27 @@
-import {FC, useEffect, useState} from "react";
 import {IPost} from "../../models/IPost.ts";
-import {postServices} from "../../services/api.service.ts";
+import {useEffect, useState} from "react";
+import {postService} from "../../services/api.service.ts";
+import {PostComponent} from "../post/PostComponent.tsx";
 
-type PostsTypeProps = {
-    userId: string;
-}
-
-export const PostsComponent:FC<PostsTypeProps> = ({userId}) => {
+export const PostsComponent = () => {
 
     const [posts, setPosts] = useState<IPost[]>([]);
 
     useEffect(() => {
-        if(userId) {
-            console.log(userId, 'exists');
-            postServices
-                .getAllPostsOfUserById(+ userId)
-                .then(value => {
-                    console.log(value);
-                    setPosts(value);
-                });
-        }
-    }, [userId]);
+        postService.getPosts().then((response) => {
+            setPosts(response.posts);
+        }).catch(err => {
+            console.error('Error fetching posts', err);
+        })
+    }, []);
 
     return (
         <div>
-            {
-                posts.map(value => <div key={value.id}>{value.title}</div>)
-            }
+            {posts.length > 0 ? (
+                posts.map(post => <PostComponent key={post.id} postItem={post}/>)
+            ) : (
+                <p>Loading posts...</p>
+            )}
         </div>
     );
 };

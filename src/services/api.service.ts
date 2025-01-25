@@ -1,22 +1,25 @@
 import {IUser} from "../models/IUser.ts";
-import {urls} from "../constants/urls.ts";
 import {IPost} from "../models/IPost.ts";
 
-export const userService = {
-    getUsers: async (): Promise<IUser[]> => {
-        return await fetch(urls.users.allUsers)
-            .then(value => value.json())
-    },
+type UserResponse  = {
+    users: IUser[];
+}
 
-    getUser: async (id:number) => {
-         return await fetch(urls.users.byId(id))
-             .then(value => value.json());
+export const userService = {
+    getUsers: async (): Promise<UserResponse> => {
+        return await fetch('https://dummyjson.com/users')
+            .then(response => response.json())
     }
 }
 
-export const postServices = {
-    getAllPostsOfUserById: async (id:number): Promise<IPost[]> => {
-        return await fetch(urls.posts.userPostsById(id))
-            .then(value => value.json())
+type PostResponse = {
+    posts: IPost[];
+}
+
+
+export const postService = {
+    getPosts: async(): Promise<PostResponse> => {
+        return await fetch('https://dummyjson.com/posts')
+            .then(response => response.json())
     }
 }

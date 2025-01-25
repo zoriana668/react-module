@@ -1,0 +1,16 @@
+body {
+    background-color: #ffbe41;
+}
+
+.user-block {
+    border: 2px solid green;
+    margin: 20px;
+
+    padding: 10px;
+}
+
+.item-userName {
+    color: darkgreen;
+    font-weight: bold;
+    font-size: 20px;
+}

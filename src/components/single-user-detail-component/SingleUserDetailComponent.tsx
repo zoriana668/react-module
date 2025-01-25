@@ -3,12 +3,12 @@ import {IUser} from "../../models/IUser.ts";
 
 export const SingleUserDetailComponent = () => {
 
-    const {state} = useLocation();
+    const  {state} = useLocation();
     const user = state as IUser;
 
     return (
         <div>
-            {user.email}
+            {user.firstName}
         </div>
-    );
-};
+    )
+}
