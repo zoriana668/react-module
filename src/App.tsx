@@ -1,13 +1,12 @@
+import {PaginationComponent} from "./components/pagination/PaginationComponent.tsx";
+import {Some} from "./components/some/Some.tsx";
 
-import UsersComponent from "./components/users-component/UsersComponent.tsx";
-
-const App = () =>  {
+export const App = () =>  {
 
   return (
       <div>
-          <UsersComponent/>
+          <Some/>
+          <PaginationComponent/>
       </div>
   )
 }
-
-export default App
