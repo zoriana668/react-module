@@ -1,11 +1,11 @@
 import {PaginationComponent} from "./components/pagination/PaginationComponent.tsx";
-import {Some} from "./components/some/Some.tsx";
+import {UsersComponent} from "./components/users/UsersComponent.tsx";
 
 export const App = () =>  {
 
   return (
       <div>
-          <Some/>
+          <UsersComponent/>
           <PaginationComponent/>
       </div>
   )
