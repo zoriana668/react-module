@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRecipes } from "../api/recipesApi";
-import { setRecipes } from "../redux/slices/recipesSlice";
+import { setRecipes } from "../redux/recipesSlice";
 import { RootState } from "../redux/store";
-import { IRecipe } from "../types/recipe";
+import {IRecipe} from "../models/recipe/IRecipe";
 import { Link } from "react-router-dom";
-import Search from "../components/Search";
-import Pagination from "../components/Pagination";
+import {Search} from "../components/search/Search";
+import {Pagination} from "../components/pagination/Pagination";
 
-const Recipes = () => {
+
+export const Recipes = () => {
     const dispatch = useDispatch();
     const recipes = useSelector((state: RootState) => state.recipes.recipes);
     const [filteredRecipes, setFilteredRecipes] = useState<IRecipe[]>(recipes);
@@ -40,16 +41,16 @@ const Recipes = () => {
     const currentRecipes = filteredRecipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
 
     return (
-        <div>
+        <div className="recipes-container">
             <h2>Рецепти</h2>
             <Search onSearch={handleSearch} />
-            <ul>
+            <ul className="recipes-list">
                 {currentRecipes.map((recipe) => (
                     <li key={recipe.id}>
                         <Link to={`/recipes/${recipe.id}`}>{recipe.name}</Link>
                         <div>
                             {recipe.tags.map((tag) => (
-                                <button key={tag} onClick={() => handleTagClick(tag)}>
+                                <button className="recipes-tags-btn" key={tag} onClick={() => handleTagClick(tag)}>
                                     {tag}
                                 </button>
                             ))}
@@ -65,5 +66,3 @@ const Recipes = () => {
         </div>
     );
 };
-
-export default Recipes;

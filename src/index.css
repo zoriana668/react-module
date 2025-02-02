@@ -6,3 +6,185 @@
 body {
     background-color: #ffbe41;
 }
+
+
+/* Home -----------------------------*/
+
+.home-block {
+    margin: 40px;
+    font-size: 24px;
+
+    background-color: #fff;
+    border-radius: 7px;
+    padding: 20px;
+    width: 320px;
+}
+
+.home-block a {
+    color: darkgreen;
+    font-weight: 500;
+}
+
+
+
+
+
+/* Menu -----------------------------*/
+
+nav {
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 10px;
+    border: 2px solid #007bff;
+}
+
+
+
+
+/* Auth -----------------------------*/
+
+
+.auth-container {
+    margin: 35px;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+
+button {
+    width: 120px;
+    height: 37px;
+    background-color: dodgerblue;
+    border-radius: 5px;
+    color: #fff;
+    transition: .2s;
+}
+
+button:hover {
+    background-color: #1479d8;
+}
+
+.error-message {
+    color: #d32f2f;
+    font-size: 14px;
+    margin-left: 12px;
+    font-weight: bold;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+
+/* general input style*/
+
+.input-group input {
+    width: 300px;
+    height: 37px;
+    border-radius: 5px;
+    margin: 15px 30px 15px 0;
+    padding: 5px;
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: #007bff;
+}
+
+
+/* Users  -----------------------------*/
+
+.users-container {
+    margin: 35px;
+}
+
+.users-container li {
+    margin: 15px 0;
+}
+
+.users-container li:hover {
+    color: #007bff;
+}
+
+
+/* Pagination  -----------------------------*/
+
+.pagination-block {
+    margin: 45px 0;
+    display: flex;
+    gap: 20px;
+}
+
+.pagination-btn {
+    width: 50px;
+}
+
+
+/* User detail  -----------------------------*/
+
+.user-detail__container {
+    margin: 35px;
+}
+
+.user-detail__name {
+    color: #0161cd;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.user-detail__container p {
+    margin-bottom: 10px;
+}
+
+
+/* Recipes  -----------------------------*/
+
+.recipes-container {
+    margin: 35px;
+}
+
+.recipes-list li a {
+    margin-left: 5px;
+}
+
+.recipes-tags-btn {
+    margin: 5px;
+}
+
+
+/* Recipes Detail -----------------------------*/
+
+.recipes-detail__container {
+    width: 80%;
+    margin: 35px;
+}
+
+.recipe-author {
+    color: #0161cd;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.recipes-detail__container p {
+    margin-bottom: 10px;
+}
+
+.recipe-detail__tags span{
+    color: #0161cd;
+}
+
+.recipe-author__profile {
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 20px;
+}

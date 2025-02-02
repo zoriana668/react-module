@@ -5,5 +5,11 @@ export const loginUser = async (username: string, password: string) => {
         body: JSON.stringify({ username, password }),
     });
 
-    return response.json();
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.message || "Помилка авторизації");
+    }
+
+    return data;
 };

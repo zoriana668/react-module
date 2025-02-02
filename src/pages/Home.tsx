@@ -6,16 +6,12 @@ export const Home = () => {
     const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
 
     return (
-        <div>
-            <h1>Ласкаво просимо!</h1>
+        <div className="home-block">
+            <h1>Привіт!</h1>
             {!isAuthenticated ? (
-                <p>
-                    Щоб побачити контент, <Link to="/auth">увійдіть</Link> у свій акаунт.
-                </p>
+                <p>Щоб побачити контент, <Link to="/auth">увійдіть</Link> у свій акаунт.</p>
             ) : (
-                <p>
-                    Перегляньте <Link to="/users">користувачів</Link> або <Link to="/recipes">рецепти</Link>.
-                </p>
+                <p>Перегляньте <Link to="/users">користувачів</Link> або <Link to="/recipes">рецепти</Link>.</p>
             )}
         </div>
     );

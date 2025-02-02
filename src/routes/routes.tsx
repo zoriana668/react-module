@@ -8,7 +8,6 @@ import {Recipes} from "../pages/Recipes";
 import {RecipeDetail} from "../pages/RecipeDetail";
 
 
-
 export const routes = createBrowserRouter([
     {
         path:'/', element: <MainLayout/>,

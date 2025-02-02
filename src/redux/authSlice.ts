@@ -1,10 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IAuthState, IUser } from "../../types/auth";
+import { IAuthState } from "../models/auth/IAuthState";
+import { IUser } from "../models/user/IUser";
 
 const initialState: IAuthState = {
     isAuthenticated: false,
     user: null,
-    token: localStorage.getItem("token") || null,
+    token: null,
 };
 
 const authSlice = createSlice({
@@ -15,13 +16,11 @@ const authSlice = createSlice({
             state.isAuthenticated = true;
             state.user = action.payload.user;
             state.token = action.payload.token;
-            localStorage.setItem("token", action.payload.token);
         },
         logout(state) {
             state.isAuthenticated = false;
             state.user = null;
             state.token = null;
-            localStorage.removeItem("token");
         },
     },
 });

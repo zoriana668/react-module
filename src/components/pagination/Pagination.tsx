@@ -1,14 +1,16 @@
+import {FC} from "react";
+
 interface PaginationProps {
     currentPage: number;
     totalPages: number;
     onPageChange: (page: number) => void;
 }
 
-const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPageChange }) => {
+export const Pagination:FC<PaginationProps> = ({ currentPage, totalPages, onPageChange }) => {
     return (
-        <div>
+        <div className="pagination-block">
             {[...Array(totalPages)].map((_, index) => (
-                <button key={index} onClick={() => onPageChange(index + 1)} disabled={index + 1 === currentPage}>
+                <button className="pagination-btn" key={index} onClick={() => onPageChange(index + 1)} disabled={index + 1 === currentPage}>
                     {index + 1}
                 </button>
             ))}
@@ -16,4 +18,3 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
     );
 };
 
-export default Pagination;

@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../api/usersApi";
-import { setUsers } from "../redux/slices/usersSlice";
+import { setUsers } from "../redux/usersSlice";
 import { RootState } from "../redux/store";
-import { IUser } from "../types/user";
+import { IUser } from "../models/user/IUser";
 import { Link } from "react-router-dom";
-import Search from "../components/Search";
-import Pagination from "../components/Pagination";
+import { Search } from "../components/search/Search";
+import { Pagination } from "../components/pagination/Pagination";
 
-const Users = () => {
+export const Users = () => {
     const dispatch = useDispatch();
     const users = useSelector((state: RootState) => state.users.users);
     const [filteredUsers, setFilteredUsers] = useState<IUser[]>(users);
@@ -24,10 +24,22 @@ const Users = () => {
     }, [users]);
 
     const handleSearch = (query: string) => {
-        const results = users.filter((user) =>
-            user.username.toLowerCase().includes(query.toLowerCase())
-        );
-        setFilteredUsers(results);
+        if (!query.trim()) {
+            setFilteredUsers(users);
+            return;
+        }
+
+        if (!isNaN(Number(query))) {
+            // Якщо введене значення - це число (ID)
+            const userById = users.find((user) => user.id === Number(query));
+            setFilteredUsers(userById ? [userById] : []);
+        } else {
+            // Якщо введене значення - це текст (username)
+            const results = users.filter((user) =>
+                user.username.toLowerCase().includes(query.toLowerCase())
+            );
+            setFilteredUsers(results);
+        }
     };
 
     const indexOfLastUser = currentPage * usersPerPage;
@@ -35,15 +47,21 @@ const Users = () => {
     const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
 
     return (
-        <div>
+        <div className="users-container">
             <h2>Користувачі</h2>
             <Search onSearch={handleSearch} />
             <ul>
-                {currentUsers.map((user) => (
-                    <li key={user.id}>
-                        <Link to={`/users/${user.id}`}>{user.username}</Link> ({user.email})
-                    </li>
-                ))}
+                {currentUsers.length > 0 ? (
+                    currentUsers.map((user) => (
+                        <li key={user.id}>
+                            <Link to={`/users/${user.id}`}>
+                                {user.username} ({user.email})
+                            </Link>
+                        </li>
+                    ))
+                ) : (
+                    <p>Користувача не знайдено</p>
+                )}
             </ul>
             <Pagination
                 currentPage={currentPage}
@@ -53,5 +71,3 @@ const Users = () => {
         </div>
     );
 };
-
-export default Users;

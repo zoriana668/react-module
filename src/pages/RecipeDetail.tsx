@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { IRecipe } from "../types/recipe";
+import {IRecipe} from "../models/recipe/IRecipe";
 
 export const RecipeDetail = () => {
     const { id } = useParams();
@@ -15,17 +15,19 @@ export const RecipeDetail = () => {
     if (!recipe) return <p>Завантаження...</p>;
 
     return (
-        <div>
-            <h2>{recipe.name}</h2>
+        <div className="recipes-detail__container">
+            <h2 className="recipe-author">{recipe.name}</h2>
             <p>Інгредієнти: {recipe.ingredients.join(", ")}</p>
             <p>Опис: {recipe.instructions}</p>
 
-            <h3>Теги:</h3>
-            {recipe.tags.map((tag) => (
+            <div className="recipe-detail__tags">
+                <h3>Теги:</h3>
+                {recipe.tags.map((tag) => (
                 <span key={tag} style={{ marginRight: 8 }}>#{tag}</span>
-            ))}
+                ))}
+            </div>
 
-            <p>
+            <p className="recipe-author__profile">
                 Автор: <Link to={`/users/${recipe.userId}`}>Дивитися профіль</Link>
             </p>
         </div>
